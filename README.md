@@ -4,6 +4,13 @@ Combined Time Select
 This is a small gem for creating Google Calendar style 12 hour AM/PM
 time_select fields for Rails 3. It's based off of [simple_time_select](https://github.com/tamoyal/simple_time_select) by tamoyal.
 
+Installation
+------------
+
+Just add this into your Gemfile followed by a bundle install:
+
+    gem "combined_time_select", "~> 0.0.1"
+
 Usage
 -----
 
