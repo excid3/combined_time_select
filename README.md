@@ -16,13 +16,13 @@ can't rely on Rails to parse the input into a valid time anymore.
 
 In the view you can do the following:
 
-  <%= f.time_select :start_time,
-    :combined => true,
-    :default => Time.now.change(:hour => 11, :min => 30),
-    :minute_interval => 15,
-    :time_separator => "",
-    :start_hour => 10,
-    :end_hour => 14 } %>
+    <%= f.time_select :start_time,
+      :combined => true,
+      :default => Time.now.change(:hour => 11, :min => 30),
+      :minute_interval => 15,
+      :time_separator => "",
+      :start_hour => 10,
+      :end_hour => 14 } %>
 
 This will create a combined time select starting at 10 AM and going till
 2 PM with 15 minute intervals with a default of 11:30 AM. This will set the
