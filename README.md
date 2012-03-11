@@ -33,7 +33,7 @@ In the view you can do the following:
       :minute_interval => 15,
       :time_separator => "",
       :start_hour => 10,
-      :end_hour => 14 } %>
+      :end_hour => 14 %>
 
 This will create a combined time select starting at 10 AM and going till
 2 PM with 15 minute intervals with a default of 11:30 AM. This will set the
