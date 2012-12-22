@@ -1,6 +1,8 @@
 Combined Time Select
 ====================
 
+Written by [Chris Oliver](http://excid3.com) [@excid3](https://twitter.com/excid3).
+
 This is a small gem for creating Google Calendar style 12 hour AM/PM
 time_select fields for Rails 3. It's based off of [simple_time_select](https://github.com/tamoyal/simple_time_select) by tamoyal.
 
@@ -13,7 +15,7 @@ Installation
 
 Just add this into your Gemfile followed by a bundle install:
 
-    gem "combined_time_select", "~> 0.0.1"
+    gem "combined_time_select", "~> 1.0.0"
 
 Usage
 -----
@@ -33,10 +35,13 @@ In the view you can do the following:
       :minute_interval => 15,
       :time_separator => "",
       :start_hour => 10,
-      :end_hour => 14 %>
+      :start_minute => 30,
+      :end_hour => 14,
+      :end_minute => 30
+    %>
 
-This will create a combined time select starting at 10 AM and going till
-2 PM with 15 minute intervals with a default of 11:30 AM. This will set the
+This will create a combined time select starting at 10:30 AM and going till
+2:30 PM with 15 minute intervals with a default of 11:30 AM. This will set the
 value for the start_time attribute on the object this form was created
 for.
 
@@ -48,6 +53,14 @@ before you initialize the new model:
     def create
       params[:event].parse_time_select! :start_time
       @event = Event.new params[:event]
+    end
+
+    def update
+      params[:event].parse_time_select! :start_time
+      @event = Event.find(params[:event])
+      if @event.update_attributes params[:event]
+        ...
+      end
     end
 
 And voila! You're all set.
@@ -67,5 +80,7 @@ parse_time_select!(attribute) looks like this:
 
     {"utf8"=>"✓", "event"=>{"start_time"=>Fri, 23 Dec 2011 10:00:00 UTC +00:00}, "commit"=>"Save changes"}
 
-This allows you to also seamlessly use a date_select field with
-combined_time_select.
+This allows you to also seamlessly use a date_select field in
+combination with combined_time_select.
+
+
