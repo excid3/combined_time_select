@@ -29,23 +29,22 @@ module ActionView::Helpers
         @options[:time_separator] = ""
 
         # Default is 15 minute intervals
-        minute_interval = 15
-        if @options[:minute_interval]
-          minute_interval = @options[:minute_interval]
-        end
+        minute_interval = @options.fetch(:minute_interval, 15)
 
         start_minute = 0
+        end_minute   = 1439
+
         # @options[:start_hour] should be specified in military
         # i.e. 0-23
         if @options[:start_hour]
-          start_minute = @options[:start_hour] * 60
+          start_minute =  @options[:start_hour] * 60
+          start_minute += @options.fetch(:start_minute, 0)
         end
 
-        end_minute = 1439
         # @options[:end_hour] should be specified in military
         # i.e. 0-23
         if @options[:end_hour]
-          end_minute = ( @options[:end_hour] + 1 ) * 60 - 1
+          end_minute = (@options[:end_hour] * 60) + @options.fetch(:end_minute, 59)
         end
 
         if @options[:use_hidden] || @options[:discard_minute]
