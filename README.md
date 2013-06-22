@@ -15,7 +15,7 @@ Installation
 
 Just add this into your Gemfile followed by a bundle install:
 
-    gem "combined_time_select", "~> 1.0.0"
+    gem "combined_time_select", "~> 1.0.1"
 
 Usage
 -----
