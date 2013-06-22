@@ -60,9 +60,11 @@ module ActionView::Helpers
               ampm_hour = ampm_hour(hour)
 
               val = "#{hour_padded}:#{minute_padded}:00"
+
+              option_text = @options[:ampm] ? "#{ampm_hour}:#{minute_padded}#{ampm}" : "#{hour_padded}:#{minute_padded}"
               minute_options << ((val_minutes == minute) ?
-                %(<option value="#{val}" selected="selected">#{ampm_hour}:#{minute_padded}#{ampm}</option>\n) :
-                %(<option value="#{val}">#{ampm_hour}:#{minute_padded}#{ampm}</option>\n)
+                %(<option value="#{val}" selected="selected">#{option_text}</option>\n) :
+                %(<option value="#{val}">#{option_text}</option>\n)
               )
             end
           end
