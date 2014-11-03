@@ -45,6 +45,8 @@ This will create a combined time select starting at 10:30 AM and going till
 value for the start_time attribute on the object this form was created
 for.
 
+Because `combined_time_select` overrides the time_select method to provide you the combined time fields, there is no need to designated designate a method when using libraries such as Formtastic.  You will, however, need to disable the built in hour and minute labels by indicating `:labels => false` (though you can still give your individual field a label with `:label => "Label Name"`) and to add in the am/pm designation for a 12 hour clock by indicating `:ampm => true`.
+
 On the controller side, we need to parse this attribute before we create
 a new object. combined_time_select provides a nice method for this
 called parse_time_select!. You can use this in your create action just
