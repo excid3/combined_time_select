@@ -69,6 +69,11 @@ before you initialize the new model:
 
 And voila! You're all set.
 
+If you would like to include a date with your time_select, you can use `date_select` with the same paramter name and the fields will be combined with the time.
+
+    <%= form.date_select :event_start %>
+    <%= form.time_select :event_start, combined: true %>
+
 Behind The Scenes
 -----------------
 
