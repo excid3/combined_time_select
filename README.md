@@ -49,6 +49,24 @@ for.
 
 Because `combined_time_select` overrides the time_select method to provide you the combined time fields, there is no need to designate a method when using libraries such as Formtastic.  You will, however, need to disable the built in hour and minute labels by indicating `:labels => false` (though you can still give your individual field a label with `:label => "Label Name"`) and to add in the am/pm designation for a 12 hour clock by indicating `:ampm => true`.
 
+You can also pass in HTML options as a second hash argument to add attributes like data directly to the html.
+
+```erb
+<%= form.time_select :time_start, # :time_start here is the datetime object
+  {
+    combined: true, 
+    minute_interval: 30, 
+    ampm: true, 
+    time_separator: "", 
+    end_hour: 23, 
+    include_blank: true
+  }, # options
+  {  
+    data: { input: "true" }
+  } # html_options
+%>
+```
+
 On the controller side, we need to parse this attribute before we create
 a new object. combined_time_select provides a nice method for this
 called parse_time_select!. You can use this in your create action just
